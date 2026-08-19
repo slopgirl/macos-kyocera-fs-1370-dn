@@ -12,12 +12,18 @@ correct trays/media handling, EcoPrint, and proper margins.
 
 The FS-1370DN is a true PostScript printer (KPDL3 = PostScript 3 compatible),
 so no driver *binary* is needed at all — only the correct PPD. This repo ships
-Kyocera's official PPD (from their Linux driver package) with two small
-patches so it works on macOS:
+Kyocera's official PPD (from their Linux driver package), sanitized for macOS
+by `scripts/build_ppd.py` (`just build-ppd`):
 
 - Removed `*cupsFilter`/`*cupsPreFilter` lines referencing Kyocera's
   Linux-only Python 2 filters (`kyofilter_F`). macOS's standard PDF→PostScript
   chain drives the printer directly.
+- Removed all kyofilter placeholder pseudo-code that would otherwise corrupt
+  the job stream (bare `timestamp=on` in the PJL header, `"0"` feature codes,
+  invalid PostScript like `/Madj False def`) — without this, the printer
+  spits out a PostScript error page (`/unmatchedmark`, `counttomark`) instead
+  of the document. The kyofilter-only UI groups (job settings, margin
+  adjustment, watermark) are dropped entirely.
 - Removed the embedded de/es/fr/it/pt PPD translations (they trip a
   `cupstestppd` conformance bug upstream). macOS localizes all standard print
   dialog options itself; only Kyocera-specific feature names appear in English.

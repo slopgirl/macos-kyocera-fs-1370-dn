@@ -42,6 +42,41 @@
 A4, DuplexNoTumble (duplex on, long edge), 601dpi (Kyocera's "600dpi + KIR"
 notation), Gray. Good defaults for this user (Germany → A4).
 
+## 0.2.0: PostScript error page diagnosis (2026-08-19, same day)
+
+User's first print (after fixing a bad USB cable — printer wasn't even
+enumerating on the bus; diagnose that with `ioreg -p IOUSB`, NOT
+`system_profiler` which returns empty in the Claude sandbox) produced a
+KPDL error page: `/unmatchedmark`, offending command `counttomark`.
+
+Root cause found by regenerating the exact wire stream locally:
+`cupsfilter -p <ppd> -m application/vnd.cups-postscript -o sides=... file`
+— this is the go-to debugging technique here. The 0.1.0 PPD still carried
+**kyofilter placeholder pseudo-code** that got injected verbatim:
+
+- `*JobDate true` (default!) → bare `timestamp=on` line inside the PJL
+  header. Not valid PJL; can knock the printer out of PJL parsing so
+  `@PJL ENTER LANGUAGE=POSTSCRIPT` is never honored.
+- Placeholder feature code `"0"` (InputSlot Auto, CIE, Option8/18,
+  MediaType Auto, LeadingEdge, KCSuperWatermark None) → stack litter.
+- `/Madj False def` — `False` is not a PostScript token (booleans are
+  lowercase) → undefined error inside setup.
+- Watermark group only defines variables for kyofilter's PS template.
+
+Fix: `scripts/build_ppd.py` now generates the macOS PPD reproducibly and
+removes the StorageOptions/Adjustment/KmWatermark groups + constraints,
+neutralizes `"0"` codes. Verified the regenerated stream has a pristine
+PJL header (hexdump: UEL → @PJL lines → `%!PS-Adobe-3.0`) and no junk.
+
+Interesting: the PPD's `*KCVersion Default` code patches Apple's
+`ct_AddStdCIDMap` from cg-pdf.ps — Kyocera explicitly engineered KPDL
+against Apple's cgpdftops output, so the Apple prolog itself is fine.
+
+If a PS error page ever appears again, next levers (untried):
+`*LanguageLevel: "2"` in the PPD to make cgpdftops emit conservative
+code, or PDF direct print (`*cupsFilter: "application/pdf 0 -"`, FS-1370DN
+supports PDF direct — but PPD PS feature code like duplex stops working).
+
 ## Not yet verified on hardware
 
 The queue install and an actual print were NOT run by Claude (user tests

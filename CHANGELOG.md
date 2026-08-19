@@ -3,6 +3,23 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is [SemVer](https://semver.org/).
 
+## [0.2.0] - 2026-08-19
+
+### Fixed
+- Printer emitted a PostScript error page (`/unmatchedmark` in
+  `counttomark`) on every job: leftover kyofilter placeholder pseudo-code
+  in the PPD corrupted the job stream. The `*JobDate` option injected a
+  bare `timestamp=on` line into the PJL header (invalid PJL), placeholder
+  feature code `"0"` pushed stack litter, and `/Madj False def` is not
+  valid PostScript (`False` vs `false`). All kyofilter-only UI groups
+  (job settings, margin adjustment, watermark) are now removed and
+  placeholder codes neutralized.
+
+### Added
+- `scripts/build_ppd.py`: reproducible generation of the macOS PPD from
+  the pristine upstream PPD (replaces the ad-hoc sed patching);
+  `just build-ppd` recipe.
+
 ## [0.1.0] - 2026-08-19
 
 ### Added

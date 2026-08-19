@@ -110,9 +110,9 @@
 *% Paper Feeders
 *OpenUI *Option8/Paper feeders: PickOne
 *DefaultOption8: None
-*Option8 None/Not installed: "0"
-*Option8 One/One: "0"
-*Option8 Two/Two: "0"
+*Option8 None/Not installed: ""
+*Option8 One/One: ""
+*Option8 Two/Two: ""
 *?Option8: "
   save
   (None) currentpagedevice dup /InputAttributes known {
@@ -127,8 +127,8 @@
 *% Disk Drive
 *OpenUI *Option18/Optional disk: PickOne
 *DefaultOption18: None
-*Option18 None/Not installed: "0"
-*Option18 RAMDisk/RAM disk: "0"
+*Option18 None/Not installed: ""
+*Option18 RAMDisk/RAM disk: ""
 *?Option18: "
   save
   false
@@ -183,80 +183,6 @@
 *UIConstraints: *Option8 One *Tmed PF100B
 *UIConstraints: *Tmed PF100B *Option8 One
 
-*UIConstraints: *Wtrans watermark *Wtyp Hollow
-*UIConstraints: *Wtyp Hollow *Wtrans watermark
-*UIConstraints: *Wang -180 *Wflg True
-*UIConstraints: *Wflg True *Wang -180
-*UIConstraints: *Wang -170 *Wflg True
-*UIConstraints: *Wflg True *Wang -170
-*UIConstraints: *Wang -160 *Wflg True
-*UIConstraints: *Wflg True *Wang -160
-*UIConstraints: *Wang -150 *Wflg True
-*UIConstraints: *Wflg True *Wang -150
-*UIConstraints: *Wang -140 *Wflg True
-*UIConstraints: *Wflg True *Wang -140
-*UIConstraints: *Wang -130 *Wflg True
-*UIConstraints: *Wflg True *Wang -130
-*UIConstraints: *Wang -120 *Wflg True
-*UIConstraints: *Wflg True *Wang -120
-*UIConstraints: *Wang -110 *Wflg True
-*UIConstraints: *Wflg True *Wang -110
-*UIConstraints: *Wang -100 *Wflg True
-*UIConstraints: *Wflg True *Wang -100
-*UIConstraints: *Wang -90 *Wflg True
-*UIConstraints: *Wflg True *Wang -90
-*UIConstraints: *Wang -80 *Wflg True
-*UIConstraints: *Wflg True *Wang -80
-*UIConstraints: *Wang -70 *Wflg True
-*UIConstraints: *Wflg True *Wang -70
-*UIConstraints: *Wang -60 *Wflg True
-*UIConstraints: *Wflg True *Wang -60
-*UIConstraints: *Wang -50 *Wflg True
-*UIConstraints: *Wflg True *Wang -50
-*UIConstraints: *Wang -40 *Wflg True
-*UIConstraints: *Wflg True *Wang -40
-*UIConstraints: *Wang -30 *Wflg True
-*UIConstraints: *Wflg True *Wang -30
-*UIConstraints: *Wang -20 *Wflg True
-*UIConstraints: *Wflg True *Wang -20
-*UIConstraints: *Wang -10 *Wflg True
-*UIConstraints: *Wflg True *Wang -10
-*UIConstraints: *Wang 10 *Wflg True
-*UIConstraints: *Wflg True *Wang 10
-*UIConstraints: *Wang 20 *Wflg True
-*UIConstraints: *Wflg True *Wang 20
-*UIConstraints: *Wang 30 *Wflg True
-*UIConstraints: *Wflg True *Wang 30
-*UIConstraints: *Wang 40 *Wflg True
-*UIConstraints: *Wflg True *Wang 40
-*UIConstraints: *Wang 50 *Wflg True
-*UIConstraints: *Wflg True *Wang 50
-*UIConstraints: *Wang 60 *Wflg True
-*UIConstraints: *Wflg True *Wang 60
-*UIConstraints: *Wang 70 *Wflg True
-*UIConstraints: *Wflg True *Wang 70
-*UIConstraints: *Wang 80 *Wflg True
-*UIConstraints: *Wflg True *Wang 80
-*UIConstraints: *Wang 90 *Wflg True
-*UIConstraints: *Wflg True *Wang 90
-*UIConstraints: *Wang 100 *Wflg True
-*UIConstraints: *Wflg True *Wang 100
-*UIConstraints: *Wang 110 *Wflg True
-*UIConstraints: *Wflg True *Wang 110
-*UIConstraints: *Wang 120 *Wflg True
-*UIConstraints: *Wflg True *Wang 120
-*UIConstraints: *Wang 130 *Wflg True
-*UIConstraints: *Wflg True *Wang 130
-*UIConstraints: *Wang 140 *Wflg True
-*UIConstraints: *Wflg True *Wang 140
-*UIConstraints: *Wang 150 *Wflg True
-*UIConstraints: *Wflg True *Wang 150
-*UIConstraints: *Wang 160 *Wflg True
-*UIConstraints: *Wflg True *Wang 160
-*UIConstraints: *Wang 170 *Wflg True
-*UIConstraints: *Wflg True *Wang 170
-*UIConstraints: *Wang 180 *Wflg True
-*UIConstraints: *Wflg True *Wang 180
 
 *UIConstraints: *Duplex DuplexTumble *MediaType Letterhead
 *UIConstraints: *Duplex DuplexNoTumble *MediaType Letterhead
@@ -494,24 +420,6 @@
 *UIConstraints: *Duplex DuplexNoTumble *PageRegion EnvDL
 *UIConstraints: *PageRegion EnvDL *Duplex DuplexTumble
 *UIConstraints: *PageRegion EnvDL *Duplex DuplexNoTumble
-*UIConstraints: *Option18 None *KCSuperWatermark UFA
-*UIConstraints: *Option18 None *KCSuperWatermark UFB
-*UIConstraints: *Option18 None *KCSuperWatermark UFC
-*UIConstraints: *Option18 None *KCSuperWatermark UFAFP
-*UIConstraints: *Option18 None *KCSuperWatermark UFBFP
-*UIConstraints: *Option18 None *KCSuperWatermark UFCFP
-*UIConstraints: *Option18 None *KCSuperWatermark SFA
-*UIConstraints: *Option18 None *KCSuperWatermark SFB
-*UIConstraints: *Option18 None *KCSuperWatermark SFC
-*UIConstraints: *KCSuperWatermark UFA *Option18 None
-*UIConstraints: *KCSuperWatermark UFB *Option18 None
-*UIConstraints: *KCSuperWatermark UFC *Option18 None
-*UIConstraints: *KCSuperWatermark UFAFP *Option18 None
-*UIConstraints: *KCSuperWatermark UFBFP *Option18 None
-*UIConstraints: *KCSuperWatermark UFCFP *Option18 None
-*UIConstraints: *KCSuperWatermark SFA *Option18 None
-*UIConstraints: *KCSuperWatermark SFB *Option18 None
-*UIConstraints: *KCSuperWatermark SFC *Option18 None
 
 
 
@@ -529,7 +437,7 @@
 *OpenUI *CIE/CIE optimization: PickOne
 *OrderDependency: 11 AnySetup *CIE
 *DefaultCIE:  PrnDef
-*CIE PrnDef/Printer settings: "0"
+*CIE PrnDef/Printer settings: ""
 *CIE False/Disabled: "<< /RejectionCIEcolor false >> setuserparams"
 *CIE True/Enabled: "<< /RejectionCIEcolor true >> setuserparams"
 *End
@@ -668,12 +576,12 @@
 *OpenUI *InputSlot: PickOne
 *OrderDependency: 30 AnySetup *InputSlot
 *DefaultInputSlot: Auto
-*InputSlot Auto/Auto source selection: "0"
+*InputSlot Auto/Auto source selection: ""
 *InputSlot Internal/Cassette 1: "<< /ManualFeed false >> setpagedevice statusdict begin 0 setpapertray end"
 *InputSlot PF100A/Cassette 2: "<< /ManualFeed false >> setpagedevice statusdict begin 1 setpapertray end"
 *InputSlot PF100B/Cassette 3: "<< /ManualFeed false >> setpagedevice statusdict begin 4 setpapertray end"
 *InputSlot MF1/MP tray: "<< /ManualFeed false >> setpagedevice statusdict begin 3 setpapertray end"
-*?Input: "0"
+*?Input: ""
 *CloseUI: *InputSlot
 
 *% Duplex
@@ -730,7 +638,7 @@ put put setglobal
 *OrderDependency: 95 AnySetup *MediaType
 *DefaultMediaType: PrnDef
 *MediaType PrnDef/Unspecified: "<</ManualFeed false /MediaType (None) /DeferredMediaSelection true >> setpagedevice"
-*MediaType Auto/Auto media selection: "0"
+*MediaType Auto/Auto media selection: ""
 *MediaType Plain/Plain: "<</ManualFeed false /MediaType (Plain) /DeferredMediaSelection true >> setpagedevice"
 *MediaType Transparency/Transparency: "<</ManualFeed false /MediaType (Transparency) /DeferredMediaSelection true >> setpagedevice"
 *MediaType Labels/Labels: "<</ManualFeed false /MediaType (Labels) /DeferredMediaSelection true >> setpagedevice"
@@ -889,269 +797,12 @@ put put setglobal
 
 *CloseGroup: BookletFolding/Booklet / Folding
 
-*OpenGroup: StorageOptions/Job settings
-
-*% Email
-*JCLOpenUI *Email/Email notification: PickOne
-*DefaultEmail: off
-*OrderDependency: 7 JCLSetup *Email
-*Email off/Off: "<00>"
-*Email ex/example@email.com: "@PJL SET KJOBFINISHNOTICE=<22>example@email.com<22><0A>"
-*JCLCloseUI: *Email
-
-*% CustomEmail
-*CustomEmail True: "@PJL SET KJOBFINISHNOTICE=<22>\1<22><0A>"
-*ParamCustomEmail email/email: 1 string 5 32
-
-*% JobName
-*JCLOpenUI *JobName/Job name: PickOne
-*DefaultJobName: off
-*OrderDependency: 6 JCLSetup *JobName
-*JobName off/Application defined: "<00>"
-*%JobName example/Example: "@PJL SET JOBNAME=<22>example<22><0A>"
-*JCLCloseUI: *JobName
-
-*% CustomJobName
-*CustomJobName True: "@PJL SET JOBNAME=<22>\1<22><0A>"
-*ParamCustomJobName custom/Job name: 1 string 1 64
-
-*% JobDate
-*JCLOpenUI *JobDate/Job timestamp: Boolean
-*DefaultJobDate: true
-*OrderDependency: 5 JCLSetup *JobDate
-*JobDate false/Off: "timestamp=off<0A>"
-*JobDate true/On: "timestamp=on<0A>"
-*JCLCloseUI: *JobDate
-
-*CloseGroup: StorageOptions/Job settings
 
 *OpenGroup: AccountingOptions/Job accounting
 
 *CloseGroup: AccountingOptions/Job accounting
 
-*OpenGroup: Adjustment/Adjustment
 
-*% Madj
-*OpenUI *Madj/Adjustment: Boolean
-*OrderDependency: 19 AnySetup *Madj
-*DefaultMadj: False
-*Madj False/Off: "/Madj False def"
-*Madj True/On: "/Madj True def"
-*CloseUI: *Madj
-
-*% Malt
-*OpenUI *Malt/Lightness: PickOne
-*OrderDependency: 11 AnySetup *Malt
-*DefaultMalt: 0
-*Malt -10.0/-10.0: "/Malt -10.0 def"
-*Malt -9.0/-9.0: "/Malt -9.0 def"
-*Malt -8.0/-8.0: "/Malt -8.0 def"
-*Malt -7.0/-7.0: "/Malt -7.0 def"
-*Malt -6.0/-6.0: "/Malt -6.0 def"
-*Malt -5.0/-5.0: "/Malt -5.0 def"
-*Malt -4.0/-4.0: "/Malt -4.0 def"
-*Malt -3.0/-3.0: "/Malt -3.0 def"
-*Malt -2.0/-2.0: "/Malt -2.0 def"
-*Malt -1.0/-1.0: "/Malt -1.0 def"
-*Malt 0/0: "/Malt 0 def"
-*Malt 1.0/1.0: "/Malt 1.0 def"
-*Malt 2.0/2.0: "/Malt 2.0 def"
-*Malt 3.0/3.0: "/Malt 3.0 def"
-*Malt 4.0/4.0: "/Malt 4.0 def"
-*Malt 5.0/5.0: "/Malt 5.0 def"
-*Malt 6.0/6.0: "/Malt 6.0 def"
-*Malt 7.0/7.0: "/Malt 7.0 def"
-*Malt 8.0/8.0: "/Malt 8.0 def"
-*Malt 9.0/9.0: "/Malt 9.0 def"
-*Malt 10.0/10.0: "/Malt 10.0 def"
-*CloseUI: *Malt
-
-*% Mact
-*OpenUI *Mact/Contrast: PickOne
-*OrderDependency: 11 AnySetup *Mact
-*DefaultMact: 0
-*Mact -10.0/-10.0: "/Mact -10.0 def"
-*Mact -9.0/-9.0: "/Mact -9.0 def"
-*Mact -8.0/-8.0: "/Mact -8.0 def"
-*Mact -7.0/-7.0: "/Mact -7.0 def"
-*Mact -6.0/-6.0: "/Mact -6.0 def"
-*Mact -5.0/-5.0: "/Mact -5.0 def"
-*Mact -4.0/-4.0: "/Mact -4.0 def"
-*Mact -3.0/-3.0: "/Mact -3.0 def"
-*Mact -2.0/-2.0: "/Mact -2.0 def"
-*Mact -1.0/-1.0: "/Mact -1.0 def"
-*Mact 0/0: "/Mact 0.0 def"
-*Mact 1.0/1.0: "/Mact 1.0 def"
-*Mact 2.0/2.0: "/Mact 2.0 def"
-*Mact 3.0/3.0: "/Mact 3.0 def"
-*Mact 4.0/4.0: "/Mact 4.0 def"
-*Mact 5.0/5.0: "/Mact 5.0 def"
-*Mact 6.0/6.0: "/Mact 6.0 def"
-*Mact 7.0/7.0: "/Mact 7.0 def"
-*Mact 8.0/8.0: "/Mact 8.0 def"
-*Mact 9.0/9.0: "/Mact 9.0 def"
-*Mact 10.0/10.0: "/Mact 10.0 def"
-*CloseUI: *Mact
-
-
-
-
-
-
-
-
-
-*CloseGroup: Adjustment/Adjustment
-
-*OpenGroup: KmWatermark/Watermark
-
-*% Wren
-*OpenUI *Wren/Watermark/Stamp: Boolean
-*OrderDependency: 19 AnySetup *Wren
-*DefaultWren: False
-*Wren False/Off: "/Wren false def"
-*Wren True/On: "/Wren true def"
-*CloseUI: *Wren
-
-*% Wtxt
-*OpenUI *Wtxt/Watermark text: PickOne
-*OrderDependency: 65 AnySetup *Wtxt
-*DefaultWtxt: Confidential
-*Wtxt Confidential/CONFIDENTIAL: "/WMTEXT (CONFIDENTIAL) def"
-*Wtxt Original/ORIGINAL: "/WMTEXT (ORIGINAL) def"
-*Wtxt Copy/COPY: "/WMTEXT (COPY) def"
-*Wtxt DoNotPhotoCopy/DO NOT PHOTOCOPY: "/WMTEXT (DO NOT PHOTOCOPY) def"
-*Wtxt Draft/DRAFT: "/WMTEXT (DRAFT) def"
-*Wtxt Final/FINAL: "/WMTEXT (FINAL) def"
-*Wtxt Proof/PROOF: "/WMTEXT (PROOF) def"
-*CloseUI: *Wtxt
-
-*% CustomWtxt
-*CustomWtxt True: 0
-*ParamCustomWtxt custom/Custom: 1 string 1 32
-
-*% Wfnt
-*OpenUI *Wfnt/Font: PickOne
-*OrderDependency: 65 AnySetup *Wfnt
-*DefaultWfnt: Arial-BoldMT
-*Wfnt Arial-BoldMT/Arial: "/WMFONT /Arial-BoldMT def"
-*Wfnt Arial-BoldItalicMT/Arial Italic: "/WMFONT /Arial-BoldItalicMT def"
-*Wfnt Courier-Bold/Courier: "/WMFONT /Courier-Bold def"
-*Wfnt Courier-BoldOblique/Courier Italic: "/WMFONT /Courier-BoldOblique def"
-*Wfnt Helvetica-Bold/Helvetica: "/WMFONT /Helvetica-Bold def"
-*Wfnt Helvetica-BoldOblique/Helvetica Italic: "/WMFONT /Helvetica-BoldOblique def"
-*Wfnt Palatino-Bold/Palatino: "/WMFONT /Palatino-Bold def"
-*Wfnt Palatino-BoldItalic/Palatino Italic: "/WMFONT /Palatino-BoldItalic def"
-*Wfnt Times-Bold/Times: "/WMFONT /Times-Bold def"
-*Wfnt Times-BoldItalic/Times Italic: "/WMFONT /Times-BoldItalic def"
-*CloseUI: *Wfnt
-
-*% Wclr
-*OpenUI *Wclr/Color: PickOne
-*OrderDependency: 65 AnySetup *Wclr
-*DefaultWclr: Black
-*Wclr Black/Black: "/WMCOLOR {0 0 0} def"
-*CloseUI: *Wclr
-
-*% Wtyp
-*OpenUI *Wtyp/Fill: PickOne
-*OrderDependency: 65 AnySetup *Wtyp
-*DefaultWtyp: Solid
-*Wtyp Solid/Solid: "/WMTYPE 0 def"
-*Wtyp Hollow/Outline: "/WMTYPE 1 def"
-*CloseUI: *Wtyp
-
-*% Wang
-*OpenUI *Wang/Angle: PickOne
-*OrderDependency: 65 AnySetup *Wang
-*DefaultWang: 50
-*Wang -180/-180: "/WMANGLE -180 def"
-*Wang -170/-170: "/WMANGLE -170 def"
-*Wang -160/-160: "/WMANGLE -160 def"
-*Wang -150/-150: "/WMANGLE -150 def"
-*Wang -140/-140: "/WMANGLE -140 def"
-*Wang -130/-130: "/WMANGLE -130 def"
-*Wang -120/-120: "/WMANGLE -120 def"
-*Wang -110/-110: "/WMANGLE -110 def"
-*Wang -100/-100: "/WMANGLE -100 def"
-*Wang -90/-90: "/WMANGLE -90 def"
-*Wang -80/-80: "/WMANGLE -80 def"
-*Wang -70/-70: "/WMANGLE -70 def"
-*Wang -60/-60: "/WMANGLE -60 def"
-*Wang -50/-50: "/WMANGLE -50 def"
-*Wang -40/-40: "/WMANGLE -40 def"
-*Wang -30/-30: "/WMANGLE -30 def"
-*Wang -20/-20: "/WMANGLE -20 def"
-*Wang -10/-10: "/WMANGLE -10 def"
-*Wang 0/0: "/WMANGLE 0 def"
-*Wang 10/10: "/WMANGLE 10 def"
-*Wang 20/20: "/WMANGLE 20 def"
-*Wang 30/30: "/WMANGLE 30 def"
-*Wang 40/40: "/WMANGLE 40 def"
-*Wang 50/50: "/WMANGLE 50 def"
-*Wang 60/60: "/WMANGLE 60 def"
-*Wang 70/70: "/WMANGLE 70 def"
-*Wang 80/80: "/WMANGLE 80 def"
-*Wang 90/90: "/WMANGLE 90 def"
-*Wang 100/100: "/WMANGLE 100 def"
-*Wang 110/110: "/WMANGLE 110 def"
-*Wang 120/120: "/WMANGLE 120 def"
-*Wang 130/130: "/WMANGLE 130 def"
-*Wang 140/140: "/WMANGLE 140 def"
-*Wang 150/150: "/WMANGLE 150 def"
-*Wang 160/160: "/WMANGLE 160 def"
-*Wang 170/170: "/WMANGLE 170 def"
-*Wang 180/180: "/WMANGLE 180 def"
-*CloseUI: *Wang
-
-*% Wsze
-*OpenUI *Wsze/Size: PickOne
-*OrderDependency: 65 AnySetup *Wsze
-*DefaultWsze: 72
-*Wsze 24/24 points: "/WMSIZE 24 def"
-*Wsze 30/30 points: "/WMSIZE 30 def"
-*Wsze 36/36 points: "/WMSIZE 36 def"
-*Wsze 42/42 points: "/WMSIZE 42 def"
-*Wsze 48/48 points: "/WMSIZE 48 def"
-*Wsze 54/54 points: "/WMSIZE 54 def"
-*Wsze 60/60 points: "/WMSIZE 60 def"
-*Wsze 66/66 points: "/WMSIZE 66 def"
-*Wsze 72/72 points: "/WMSIZE 72 def"
-*CloseUI: *Wsze
-
-*% Wtrans
-*OpenUI *Wtrans/Style: PickOne
-*OrderDependency: 65 AnySetup *Wtrans
-*DefaultWtrans: watermark
-*Wtrans watermark/Watermark: "/WMTRANSPARENT true def"
-*Wtrans stamp/Stamp: "/WMTRANSPARENT false def"
-*CloseUI: *Wtrans
-
-*% Wflg
-*OpenUI *Wflg/Repeat watermark: Boolean
-*OrderDependency: 65 AnySetup *Wflg
-*DefaultWflg: False
-*Wflg False/Off: "/WMFLAG 1 def"
-*Wflg True/On: "/WMFLAG 2 def"
-*CloseUI: *Wflg
-
-*% KCSuperWatermark
-*OpenUI *KCSuperWatermark/Super watermark: PickOne
-*OrderDependency: 10 AnySetup *KCSuperWatermark
-*DefaultKCSuperWatermark: None
-*KCSuperWatermark None/None: "0"
-*KCSuperWatermark UFA/Use form-a print on all pages: "<</BeginPage {pop  mark {(%disk0%Form-A) kcloadpageimage} stopped cleartomark}>> setpagedevice"
-*KCSuperWatermark UFB/Use form-b print on all pages: "<</BeginPage {pop  mark {(%disk0%Form-B) kcloadpageimage} stopped cleartomark}>> setpagedevice"
-*KCSuperWatermark UFC/Use form-c print on all pages: "<</BeginPage {pop  mark {(%disk0%Form-C) kcloadpageimage} stopped cleartomark}>> setpagedevice"
-*KCSuperWatermark UFAFP/Use form-a print on first page only: "<</BeginPage {0 eq {mark {(%disk0%Form-A) kcloadpageimage} stopped cleartomark}if}>> setpagedevice"
-*KCSuperWatermark UFBFP/Use form-b print on first page only: "<</BeginPage {0 eq {mark {(%disk0%Form-B) kcloadpageimage} stopped cleartomark}if}>> setpagedevice"
-*KCSuperWatermark UFCFP/Use form-c print on first page only: "<</BeginPage {0 eq {mark {(%disk0%Form-C) kcloadpageimage} stopped cleartomark}if}>> setpagedevice"
-*KCSuperWatermark SFA/Save form-a: "<</EndPage {exch pop 2 ne dup  mark exch {{(%disk0%Form-A) kcsavepageimage} stopped} if cleartomark}>> setpagedevice"
-*KCSuperWatermark SFB/Save form-b: "<</EndPage {exch pop 2 ne dup  mark exch {{(%disk0%Form-B) kcsavepageimage} stopped} if cleartomark}>> setpagedevice"
-*KCSuperWatermark SFC/Save form-c: "<</EndPage {exch pop 2 ne dup  mark exch {{(%disk0%Form-C) kcsavepageimage} stopped} if cleartomark}>> setpagedevice"
-*CloseUI: *KCSuperWatermark
-
-*CloseGroup: KmWatermark/Watermark
 
 
 *DefaultHalftoneType: 1
@@ -1228,7 +879,7 @@ put put setglobal
 *PaperDimension EnvC5/Envelope C5: "459 649"
 
 *VariablePaperSize: True
-*LeadingEdge Short: "0"
+*LeadingEdge Short: ""
 *DefaultLeadingEdge: Short
 *HWMargins: 12 12 12 12
 *MaxMediaWidth: "612"

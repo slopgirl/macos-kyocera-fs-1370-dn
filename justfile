@@ -27,6 +27,10 @@ status:
 detect:
     lpinfo -v | grep -i usb || echo "No USB printer detected (is it on and plugged in?)"
 
+# Regenerate the macOS PPD from the pristine upstream PPD
+build-ppd:
+    python3 scripts/build_ppd.py
+
 # Validate the patched PPD with cupstestppd
 validate:
     cupstestppd ppd/Kyocera_FS-1370DN-macOS.ppd
