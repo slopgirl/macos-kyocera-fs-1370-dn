@@ -41,7 +41,11 @@ falling back to the URI of an existing queue if the printer is currently off.
 It then creates/updates the CUPS queue `Kyocera_FS_1370DN` with the patched
 PPD and enables it. Re-running is safe (idempotent).
 
-Defaults after install: **A4, duplex (long-edge), 600 dpi, mono.**
+Defaults after install: **A4, duplex (long-edge), 600 dpi, mono, paper from
+Cassette 1.** (With the PPD's `Auto` source the printer itself picks the
+tray, and Kyocera firmware prefers the MP tray whenever it holds paper —
+that's why Cassette 1 is pinned. Override per job in the print dialog:
+Media Source → Auto/MP tray/Cassette 2.)
 
 Options: `--queue NAME`, `--uri URI`, `--location TEXT`, `--dry-run`.
 

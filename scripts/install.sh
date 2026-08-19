@@ -71,14 +71,19 @@ echo "  PPD: $PPD"
 
 if [[ $DRY_RUN -eq 1 ]]; then
   echo "[dry-run] lpadmin -p $QUEUE -E -v $URI -P $PPD -D '$DESCRIPTION' -L '$LOCATION' \\"
-  echo "            -o printer-is-shared=false -o printer-error-policy=retry-current-job"
+  echo "            -o printer-is-shared=false -o printer-error-policy=retry-current-job \\"
+  echo "            -o InputSlot-default=Internal"
   exit 0
 fi
 
+# InputSlot-default=Internal: draw from Cassette 1 by default. With Auto the
+# printer decides, and Kyocera firmware prefers the MP tray whenever it holds
+# paper. Per-job override in the print dialog still works.
 lpadmin -p "$QUEUE" -E -v "$URI" -P "$PPD" \
   -D "$DESCRIPTION" -L "$LOCATION" \
   -o printer-is-shared=false \
-  -o printer-error-policy=retry-current-job
+  -o printer-error-policy=retry-current-job \
+  -o InputSlot-default=Internal
 
 cupsenable "$QUEUE" 2>/dev/null || true
 cupsaccept "$QUEUE" 2>/dev/null || true
@@ -95,6 +100,6 @@ fi
 
 cat <<EOF
 
-Done. Defaults: A4, duplex (long-edge), 600 dpi.
+Done. Defaults: A4, duplex (long-edge), 600 dpi, paper from Cassette 1.
 Test it with:  lp -d $QUEUE /usr/share/cups/data/testprint
 EOF

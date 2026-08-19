@@ -3,6 +3,15 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is [SemVer](https://semver.org/).
 
+## [0.2.1] - 2026-08-19
+
+### Fixed
+- Jobs drew paper from an unexpected source: the `Auto` input slot emits no
+  source selection, letting Kyocera firmware prefer the MP tray whenever it
+  holds paper. The queue now defaults to Cassette 1
+  (`-o InputSlot-default=Internal` in install.sh); per-job override in the
+  print dialog still works.
+
 ## [0.2.0] - 2026-08-19
 
 ### Fixed
