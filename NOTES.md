@@ -102,3 +102,16 @@ always-emitted `*MediaType PrnDef` code
 setpagedevice`, upstream as-is) and the PageSize code's
 `/Policies << /PageSize 7 >>` — both can trigger firmware media matching.
 MediaType `Auto` emits nothing and is the thing to try.
+
+### Empty Paper Feed pane (same day)
+
+User: the macOS print dialog's Paper Feed section was empty. CUPS builds
+IPP `media-source-supported` from InputSlot keywords (ppd-cache.c,
+`_ppdCacheCreateWithPPD`): only Auto*/Default, Cassette, MP/MPTray/
+Multipurpose*, Upper/Lower/Middle/Side, LargeCapacity, ... map to PWG names;
+everything else goes through pwg_unppdize_name → `internal`, `pf-100-a`,
+`pf-100-b`, `mf-1`. build_ppd.py now renames to Tray1/2/3 + MPTray →
+`tray-1..3`, `by-pass-tray` (check: `ipptool -tv
+ipp://localhost/printers/Kyocera_FS_1370DN get-printer-attributes.test |
+grep media-source`). Hypothesis "dialog hides non-standard keywords" was
+NOT confirmed visually by Claude — awaiting user.

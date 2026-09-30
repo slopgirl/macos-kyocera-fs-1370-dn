@@ -12,18 +12,18 @@ Usage: paper-source.sh [options] [SOURCE]
 Without SOURCE, show the current default and the available choices.
 
 SOURCE (friendly name or PPD name):
-  auto       Auto      printer's own panel setting decides (recommended)
-  cassette1  Internal  Cassette 1
-  cassette2  PF100A    Cassette 2 (optional PF-100 feeder)
-  cassette3  PF100B    Cassette 3 (second optional PF-100 feeder)
-  mp         MF1       MP (multi-purpose) tray
+  auto       Auto    printer's own panel setting decides (recommended)
+  cassette1  Tray1   Cassette 1
+  cassette2  Tray2   Cassette 2 (optional PF-100 feeder)
+  cassette3  Tray3   Cassette 3 (second optional PF-100 feeder)
+  mp         MPTray  MP (multi-purpose) tray
 
 Options:
   --queue NAME  CUPS queue name (default: $QUEUE)
   -h, --help    Show this help
 
 A single job can override the default:
-  lp -d $QUEUE -o InputSlot=MF1 file.pdf
+  lp -d $QUEUE -o InputSlot=MPTray file.pdf
 EOF
 }
 
@@ -49,11 +49,12 @@ if [[ -z "$SOURCE" ]]; then
 fi
 
 case "$(tr '[:upper:]' '[:lower:]' <<<"$SOURCE")" in
-  auto)                SLOT=Auto ;;
-  cassette1|internal)  SLOT=Internal ;;
-  cassette2|pf100a)    SLOT=PF100A ;;
-  cassette3|pf100b)    SLOT=PF100B ;;
-  mp|mf1)              SLOT=MF1 ;;
+  auto)                      SLOT=Auto ;;
+  # Kyocera's upstream keywords (internal, pf100a, ...) kept as aliases.
+  cassette1|tray1|internal)  SLOT=Tray1 ;;
+  cassette2|tray2|pf100a)    SLOT=Tray2 ;;
+  cassette3|tray3|pf100b)    SLOT=Tray3 ;;
+  mp|mptray|mf1)             SLOT=MPTray ;;
   *) echo "ERROR: unknown paper source '$SOURCE'" >&2; usage; exit 2 ;;
 esac
 

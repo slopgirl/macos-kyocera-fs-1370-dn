@@ -24,7 +24,12 @@ This script therefore:
      (kyofilter-only functionality) and any UIConstraints referencing
      their options,
   4. rewrites remaining placeholder feature code "0" to "" so nothing
-     is injected for those choices.
+     is injected for those choices,
+  5. renames the InputSlot choice keywords (Internal, PF100A, PF100B, MF1)
+     to names CUPS maps to standard PWG media-source keywords (tray-1..3,
+     by-pass-tray). Kyocera's names become non-standard keywords
+     (internal, pf-100-a, ...) that the macOS print dialog's Paper Feed
+     pane does not list. Display names and PostScript code are unchanged.
 """
 
 import re
@@ -51,6 +56,17 @@ DROP_OPTIONS = {
 PLACEHOLDER_RE = re.compile(
     r'^(\*(?:Option8|Option18|CIE|InputSlot|MediaType|KCSuperWatermark|'
     r'LeadingEdge|\?Input)[^:]*): "0"'
+)
+
+# Upstream InputSlot keyword -> keyword CUPS maps to a PWG media-source.
+INPUT_SLOT_RENAME = {
+    "Internal": "Tray1",   # Cassette 1 -> tray-1
+    "PF100A": "Tray2",     # Cassette 2 -> tray-2
+    "PF100B": "Tray3",     # Cassette 3 -> tray-3
+    "MF1": "MPTray",       # MP tray    -> by-pass-tray
+}
+INPUT_SLOT_RE = re.compile(
+    r"(\*InputSlot )(" + "|".join(INPUT_SLOT_RENAME) + r")\b"
 )
 
 LOCALE_RE = re.compile(r"^\*(?:de|es|fr|it|pt)\.")
@@ -89,6 +105,10 @@ def main() -> int:
         m = PLACEHOLDER_RE.match(line)
         if m:
             line = m.group(1) + ': ""' + line[m.end():]
+
+        line = INPUT_SLOT_RE.sub(
+            lambda m: m.group(1) + INPUT_SLOT_RENAME[m.group(2)], line
+        )
 
         out.append(line)
 

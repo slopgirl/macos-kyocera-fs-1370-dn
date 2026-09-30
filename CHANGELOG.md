@@ -12,8 +12,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is [S
   job and made the panel setting unusable. Re-running the install resets a
   previously pinned tray.
 
+### Fixed
+- The macOS print dialog's Paper Feed pane was empty: Kyocera's InputSlot
+  keywords (`Internal`, `PF100A`, `PF100B`, `MF1`) became non-standard IPP
+  media-source keywords the dialog doesn't list. The generated PPD now uses
+  `Tray1`, `Tray2`, `Tray3`, `MPTray` (→ `tray-1..3`, `by-pass-tray`);
+  display names and PostScript code are unchanged.
+
 ### Added
-- `install.sh --input-slot Auto|Internal|PF100A|PF100B|MF1` to pin a
+- `install.sh --input-slot Auto|Tray1|Tray2|Tray3|MPTray` to pin a
   default paper source deliberately.
 - `just paper-source [SOURCE]` (`scripts/paper-source.sh`): show or change
   the queue's default paper source without reinstalling; accepts friendly

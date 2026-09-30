@@ -22,8 +22,8 @@ Options:
   --uri URI        Device URI (default: auto-detect the USB printer)
   --location TEXT  Printer location label (default: $LOCATION)
   --input-slot S   Default paper source: Auto (printer's own setting),
-                   Internal (Cassette 1), PF100A (Cassette 2),
-                   PF100B (Cassette 3), MF1 (MP tray) (default: Auto)
+                   Tray1/Tray2/Tray3 (Cassette 1/2/3), MPTray (MP tray)
+                   (default: Auto; change later with paper-source.sh)
   --dry-run        Show what would be done without changing anything
   -h, --help       Show this help
 EOF
@@ -44,7 +44,7 @@ done
 [[ -f "$PPD" ]] || { echo "ERROR: PPD not found: $PPD" >&2; exit 1; }
 
 case "$INPUT_SLOT" in
-  Auto|Internal|PF100A|PF100B|MF1) ;;
+  Auto|Tray1|Tray2|Tray3|MPTray) ;;
   *) echo "ERROR: invalid --input-slot '$INPUT_SLOT'" >&2; usage; exit 2 ;;
 esac
 

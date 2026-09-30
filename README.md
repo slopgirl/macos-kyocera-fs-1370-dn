@@ -56,11 +56,13 @@ Options: `--queue NAME`, `--uri URI`, `--location TEXT`, `--input-slot S`,
   just paper-source mp         # auto | cassette1 | cassette2 | cassette3 | mp
   just paper-source auto       # back to the printer's panel setting
   ```
-  `just install --input-slot MF1` does the same at install time (PPD names:
-  `Auto`, `Internal`, `PF100A`, `PF100B`, `MF1`).
-- **Per job, print dialog:** Paper Feed / Media Source. If you use a saved
+  `just install --input-slot MPTray` does the same at install time (PPD
+  names: `Auto`, `Tray1`, `Tray2`, `Tray3`, `MPTray`).
+- **Per job, print dialog:** Paper Feed pane ("All pages from"). Cassettes
+  2/3 only become selectable once "Paper feeders" (printer options) says
+  they are installed. If you use a saved
   dialog preset, check that it doesn't carry an old Media Source choice.
-- **Per job, command line:** `lp -d Kyocera_FS_1370DN -o InputSlot=MF1 file.pdf`
+- **Per job, command line:** `lp -d Kyocera_FS_1370DN -o InputSlot=MPTray file.pdf`
 
 ## Test
 
