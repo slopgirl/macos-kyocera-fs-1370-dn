@@ -45,6 +45,9 @@ Defaults after install: **A4, duplex (long-edge), 600 dpi, mono, paper
 source `Auto`.** `Auto` sends no tray selection, so the paper source set on
 the printer's own panel decides.
 
+Options: `--queue NAME`, `--uri URI`, `--location TEXT`, `--input-slot S`,
+`--dry-run`.
+
 ### Choosing the paper source
 
 - **Queue default** (applies to every job without its own choice):
@@ -58,9 +61,6 @@ the printer's own panel decides.
 - **Per job, print dialog:** Paper Feed / Media Source. If you use a saved
   dialog preset, check that it doesn't carry an old Media Source choice.
 - **Per job, command line:** `lp -d Kyocera_FS_1370DN -o InputSlot=MF1 file.pdf`
-
-Options: `--queue NAME`, `--uri URI`, `--location TEXT`, `--input-slot S`,
-`--dry-run`.
 
 ## Test
 
