@@ -15,6 +15,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is [S
 ### Added
 - `install.sh --input-slot Auto|Internal|PF100A|PF100B|MF1` to pin a
   default paper source deliberately.
+- `just paper-source [SOURCE]` (`scripts/paper-source.sh`): show or change
+  the queue's default paper source without reinstalling; accepts friendly
+  names (`auto`, `cassette1`–`cassette3`, `mp`) or PPD names.
 
 ## [0.2.1] - 2026-08-19
 

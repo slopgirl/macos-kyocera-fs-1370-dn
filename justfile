@@ -12,6 +12,10 @@ install *ARGS:
 install-dry-run:
     scripts/install.sh --dry-run
 
+# Show or set the default paper source (auto, cassette1-3, mp)
+paper-source *ARGS:
+    scripts/paper-source.sh {{ARGS}}
+
 # Remove the print queue
 uninstall QUEUE="Kyocera_FS_1370DN":
     scripts/uninstall.sh {{QUEUE}}
