@@ -3,6 +3,19 @@
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is [SemVer](https://semver.org/).
 
+## [0.3.0] - 2026-09-30
+
+### Changed
+- The queue's default paper source is `Auto` again: jobs carry no tray
+  selection, so the paper source set on the printer's panel is honored.
+  Reverts the 0.2.1 Cassette 1 pin, which sent `setpapertray 0` with every
+  job and made the panel setting unusable. Re-running the install resets a
+  previously pinned tray.
+
+### Added
+- `install.sh --input-slot Auto|Internal|PF100A|PF100B|MF1` to pin a
+  default paper source deliberately.
+
 ## [0.2.1] - 2026-08-19
 
 ### Fixed

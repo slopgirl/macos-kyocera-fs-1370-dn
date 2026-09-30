@@ -84,3 +84,21 @@ manually, per their global CLAUDE.md). Verified so far: PPD passes
 cupstestppd, scripts pass `bash -n`, install.sh --dry-run output correct.
 If duplex or trays misbehave on real prints, first suspects: none known —
 KPDL PPDs from this package are widely used on Linux CUPS.
+
+## 0.3.0: paper source back to Auto (2026-09-30)
+
+User report: the setup "does not honor the paper source set in the printer
+and overwrites it with one of the two choices". Cause: 0.2.1 pinned
+`InputSlot-default=Internal`, so every job emitted
+`statusdict begin 0 setpapertray end`. Default is `Auto` again (emits
+nothing; verified with cupsfilter that no `setpapertray` is in the stream).
+The 0.2.1 rationale ("firmware prefers MP tray under Auto") was never
+confirmed on hardware; with Auto the panel's settings (paper source,
+MP tray priority) are what govern — that's the user's intent.
+
+If the panel is still ignored under Auto, the next suspect is the
+always-emitted `*MediaType PrnDef` code
+(`<</ManualFeed false /MediaType (None) /DeferredMediaSelection true>>
+setpagedevice`, upstream as-is) and the PageSize code's
+`/Policies << /PageSize 7 >>` — both can trigger firmware media matching.
+MediaType `Auto` emits nothing and is the thing to try.

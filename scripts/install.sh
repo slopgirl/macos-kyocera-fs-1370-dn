@@ -10,6 +10,7 @@ QUEUE="Kyocera_FS_1370DN"
 DESCRIPTION="Kyocera FS-1370DN"
 LOCATION="USB"
 URI=""
+INPUT_SLOT="Auto"
 DRY_RUN=0
 
 usage() {
@@ -20,6 +21,9 @@ Options:
   --queue NAME     CUPS queue name (default: $QUEUE)
   --uri URI        Device URI (default: auto-detect the USB printer)
   --location TEXT  Printer location label (default: $LOCATION)
+  --input-slot S   Default paper source: Auto (printer's own setting),
+                   Internal (Cassette 1), PF100A (Cassette 2),
+                   PF100B (Cassette 3), MF1 (MP tray) (default: Auto)
   --dry-run        Show what would be done without changing anything
   -h, --help       Show this help
 EOF
@@ -30,6 +34,7 @@ while [[ $# -gt 0 ]]; do
     --queue)    QUEUE="$2"; shift 2 ;;
     --uri)      URI="$2"; shift 2 ;;
     --location) LOCATION="$2"; shift 2 ;;
+    --input-slot) INPUT_SLOT="$2"; shift 2 ;;
     --dry-run)  DRY_RUN=1; shift ;;
     -h|--help)  usage; exit 0 ;;
     *) echo "Unknown option: $1" >&2; usage; exit 2 ;;
@@ -37,6 +42,11 @@ while [[ $# -gt 0 ]]; do
 done
 
 [[ -f "$PPD" ]] || { echo "ERROR: PPD not found: $PPD" >&2; exit 1; }
+
+case "$INPUT_SLOT" in
+  Auto|Internal|PF100A|PF100B|MF1) ;;
+  *) echo "ERROR: invalid --input-slot '$INPUT_SLOT'" >&2; usage; exit 2 ;;
+esac
 
 # --- Find the printer's USB device URI -------------------------------------
 # 1. Live USB detection (printer must be on and plugged in).
@@ -68,22 +78,24 @@ fi
 echo "Installing queue '$QUEUE'"
 echo "  URI: $URI"
 echo "  PPD: $PPD"
+echo "  Default paper source: $INPUT_SLOT"
 
 if [[ $DRY_RUN -eq 1 ]]; then
   echo "[dry-run] lpadmin -p $QUEUE -E -v $URI -P $PPD -D '$DESCRIPTION' -L '$LOCATION' \\"
   echo "            -o printer-is-shared=false -o printer-error-policy=retry-current-job \\"
-  echo "            -o InputSlot-default=Internal"
+  echo "            -o InputSlot-default=$INPUT_SLOT"
   exit 0
 fi
 
-# InputSlot-default=Internal: draw from Cassette 1 by default. With Auto the
-# printer decides, and Kyocera firmware prefers the MP tray whenever it holds
-# paper. Per-job override in the print dialog still works.
+# InputSlot-default: Auto emits no source selection, so the printer's own
+# panel setting decides the tray. Any other value sends `setpapertray` with
+# every job and overrides the panel. Set explicitly so re-running also resets
+# a previously pinned tray. Per-job override in the print dialog still works.
 lpadmin -p "$QUEUE" -E -v "$URI" -P "$PPD" \
   -D "$DESCRIPTION" -L "$LOCATION" \
   -o printer-is-shared=false \
   -o printer-error-policy=retry-current-job \
-  -o InputSlot-default=Internal
+  -o InputSlot-default="$INPUT_SLOT"
 
 cupsenable "$QUEUE" 2>/dev/null || true
 cupsaccept "$QUEUE" 2>/dev/null || true
@@ -100,6 +112,6 @@ fi
 
 cat <<EOF
 
-Done. Defaults: A4, duplex (long-edge), 600 dpi, paper from Cassette 1.
+Done. Defaults: A4, duplex (long-edge), 600 dpi, paper source $INPUT_SLOT.
 Test it with:  lp -d $QUEUE /usr/share/cups/data/testprint
 EOF
